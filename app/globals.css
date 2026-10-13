@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg:      #0c0c10;
+  --color-surface: #15151c;
+  --color-raised:  #1e1e28;
+  --color-border:  #2a2a3a;
+  --color-muted:   #4a4a62;
+  --color-accent:  #ff3300;
+  --color-accent-dim: #cc2800;
+  --color-correct: #4ade80;
+  --color-wrong:   #f87171;
+
+  /* keep old names so existing utility classes still resolve */
+  --color-ink:        #0c0c10;
+  --color-well:       #15151c;
+  --color-ember:      #ff3300;
+  --color-ember-dark: #cc2800;
+  --color-ember-glow: #ff6644;
+  --color-smoke:      #2a2a3a;
+
+  --font-display: var(--font-barlow), sans-serif;
+  --font-plate:   var(--font-barlow), sans-serif;
+  --font-sans:    var(--font-inter), system-ui, sans-serif;
+  --font-mono:    var(--font-space-mono), monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: #fff;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* subtle noise texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  opacity: 0.25;
+  background: url("./bgtexture.png");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+::selection { background: var(--color-accent); color: #fff; }
+
+input:focus { outline: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
